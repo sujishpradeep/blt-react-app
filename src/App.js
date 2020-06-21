@@ -20,12 +20,8 @@ function App() {
       const results = Papa.parse(csv, { header: false }); // object with { data, errors, meta }
       const rows = results.data; // array of objects
       setRows(rows);
-      console.log("rows", rows);
       rows.forEach((r) => {
-        console.log("r", r);
-        Object.keys(r).forEach((k, i) => {
-          console.log("k", r[k]);
-        });
+        Object.keys(r).forEach((k, i) => {});
       });
     }
     getData();
