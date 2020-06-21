@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
