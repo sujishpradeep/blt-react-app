@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Papa from "papaparse";
+import Table from "react-bootstrap/Table";
 
 function App() {
+  const [rows, setRows] = React.useState([]);
+  React.useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        "https://www.dropbox.com/sh/glwkdemgdf8ksxa/AACKF3jlm6t6Cf2YFkjnuwoUa?dl=0&preview=Wolfe.csvM"
+      );
+
+      // const response = await fetch("/Wolfe 01-08-2019.csv");
+      const reader = response.body.getReader();
+      const result = await reader.read(); // raw array
+      const decoder = new TextDecoder("utf-8");
+      const csv = decoder.decode(result.value); // the csv text
+      const results = Papa.parse(csv, { header: false }); // object with { data, errors, meta }
+      const rows = results.data; // array of objects
+      setRows(rows);
+      console.log("rows", rows);
+      rows.forEach((r) => {
+        console.log("r", r);
+        Object.keys(r).forEach((k, i) => {
+          console.log("k", r[k]);
+        });
+      });
+    }
+    getData();
+  }, []); // [] means just do this once, after initial render
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Table responsive="sm" striped bordered hover>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i}>
+              <React.Fragment>
+                {Object.keys(r).map((k, ii) => (
+                  <td>{r[k]}</td>
+                ))}
+              </React.Fragment>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 }
