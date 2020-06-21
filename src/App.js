@@ -8,7 +8,7 @@ function App() {
   React.useEffect(() => {
     async function getData() {
       const response = await fetch(
-        "http://dl.dropboxusercontent.com/sh/glwkdemgdf8ksxa/AAB6RsmDZXCRPZfzhtWNVckUa/Wolfe.csv"
+        "https://dl.dropboxusercontent.com/sh/glwkdemgdf8ksxa/AAB6RsmDZXCRPZfzhtWNVckUa/Wolfe.csv"
       );
 
       // const response = await fetch("/Wolfe 01-08-2019.csv");
