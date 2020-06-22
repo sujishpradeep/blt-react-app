@@ -2,9 +2,11 @@ import React from "react";
 import "./App.css";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
+import Navbar from "react-bootstrap/Navbar";
 
 function App() {
   const [rows, setRows] = React.useState([]);
+  const [time, setTime] = React.useState([]);
   React.useEffect(() => {
     async function getData() {
       const response = await fetch(
@@ -22,12 +24,24 @@ function App() {
       rows.forEach((r) => {
         Object.keys(r).forEach((k, i) => {});
       });
+      // const time = new Date();
+      // console.log(time);
+      // setTime(time);
     }
     getData();
+    const interval = setInterval(() => getData(), 300000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []); // [] means just do this once, after initial render
   return (
     <div className="app">
-      <Table responsive="sm" striped bordered hover>
+      {/* <Navbar bg="light">
+        <Navbar.Brand href="#home">Last updated {time}</Navbar.Brand>
+      </Navbar> */}
+      <br />
+      {/* <div> Last updated {time}</div> */}
+      <Table striped bordered hover>
         <tbody>
           {rows.map((r, i) => (
             <tr key={i}>
