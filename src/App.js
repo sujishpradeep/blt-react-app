@@ -2,11 +2,9 @@ import React from "react";
 import "./App.css";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
-import Navbar from "react-bootstrap/Navbar";
 
 function App() {
   const [rows, setRows] = React.useState([]);
-  const [time, setTime] = React.useState([]);
   React.useEffect(() => {
     async function getData() {
       const response = await fetch(
@@ -21,6 +19,7 @@ function App() {
       const results = Papa.parse(csv, { header: false }); // object with { data, errors, meta }
       const rows = results.data; // array of objects
       setRows(rows);
+      console.log("rows", rows);
       rows.forEach((r) => {
         Object.keys(r).forEach((k, i) => {});
       });
