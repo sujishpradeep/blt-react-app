@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import Papa from "papaparse";
-import Table from "react-bootstrap/Table";
 
 class LandingPage extends Component {
   state = {};
 
-  constructor(props) {
-    super(props);
-  }
+  //   constructor(props) {
+  //     super(props);
+  //   }
 
   render() {
     return (
