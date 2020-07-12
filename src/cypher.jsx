@@ -3,12 +3,12 @@ import "./App.css";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
 
-function Channel() {
+function Cypher() {
   const [rows, setRows] = React.useState([]);
   React.useEffect(() => {
     async function getData() {
       const response = await fetch(
-        "https://dl.dropboxusercontent.com/s/6ik76pysoyto9d5/channel.csv "
+        "https://dl.dropboxusercontent.com/s/8p53922fx49q3l7/cypher.csv"
       );
 
       const reader = response.body.getReader();
@@ -56,4 +56,4 @@ function Channel() {
   );
 }
 
-export default Channel;
+export default Cypher;

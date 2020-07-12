@@ -3,12 +3,12 @@ import "./App.css";
 import Papa from "papaparse";
 import Table from "react-bootstrap/Table";
 
-function Channel() {
+function Crab() {
   const [rows, setRows] = React.useState([]);
   React.useEffect(() => {
     async function getData() {
       const response = await fetch(
-        "https://dl.dropboxusercontent.com/s/6ik76pysoyto9d5/channel.csv "
+        "https://dl.dropboxusercontent.com/s/aenb6sgg747abzw/crab.csv"
       );
 
       const reader = response.body.getReader();
@@ -56,4 +56,4 @@ function Channel() {
   );
 }
 
-export default Channel;
+export default Crab;
